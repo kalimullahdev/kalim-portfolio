@@ -2189,41 +2189,57 @@ section {
 .modal-scroll-body {
   width: 100%;
   max-height: calc(100vh - 6rem);
-  overflow-y: scroll !important; /* Always permanently visible */
+  overflow-y: auto;
   overflow-x: hidden;
-  scrollbar-gutter: stable always;
   -webkit-overflow-scrolling: touch;
-  padding: 3rem 2.5rem; /* Generous top, bottom, and side padding inside dialog */
-  scrollbar-width: thin;
-  scrollbar-color: #6366f1 rgba(255, 255, 255, 0.12);
+  padding: 3rem 2.75rem 3rem 2.5rem;
+  scrollbar-width: none; /* Controlled by custom permanent DOM slider */
+  -ms-overflow-style: none;
 }
 
 .modal-scroll-body::-webkit-scrollbar {
-  width: 10px !important;
-  height: 10px !important;
-  display: block !important;
-  -webkit-appearance: none !important;
+  display: none; /* Controlled by custom permanent DOM slider */
+  width: 0;
+  height: 0;
 }
 
-.modal-scroll-body::-webkit-scrollbar-track {
-  background: rgba(255, 255, 255, 0.08) !important;
-  border-radius: 9999px !important;
-  margin: 1.5rem 0.35rem !important;
-  border: 1px solid rgba(255, 255, 255, 0.06) !important;
+/* Custom Floating DOM Scroll Slider (Permanently 100% visible on all OS & Trackpads) */
+.modal-scroll-track {
+  position: absolute;
+  top: 1.5rem;
+  bottom: 1.5rem;
+  right: 12px;
+  width: 8px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 9999px;
+  z-index: 20;
+  pointer-events: auto;
+  cursor: pointer;
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(8px);
 }
 
-.modal-scroll-body::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, #6366f1 0%, #06b6d4 100%) !important;
-  border-radius: 9999px !important;
-  border: 2px solid #080c18 !important;
-  min-height: 60px !important;
-  box-shadow: 0 0 12px rgba(99, 102, 241, 0.6) !important;
+.modal-scroll-thumb {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  min-height: 48px;
+  border-radius: 9999px;
+  background: linear-gradient(180deg, #6366f1 0%, #06b6d4 100%);
+  box-shadow: 0 0 14px rgba(99, 102, 241, 0.8), 0 0 6px rgba(6, 182, 212, 0.9);
+  cursor: grab;
   transition: background var(--transition-fast), box-shadow var(--transition-fast);
 }
 
-.modal-scroll-body::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(180deg, #818cf8 0%, #22d3ee 100%) !important;
-  box-shadow: 0 0 16px rgba(6, 182, 212, 0.9) !important;
+.modal-scroll-thumb:hover {
+  background: linear-gradient(180deg, #818cf8 0%, #22d3ee 100%);
+  box-shadow: 0 0 18px rgba(6, 182, 212, 1);
+}
+
+.modal-scroll-thumb:active {
+  cursor: grabbing;
 }
 
 .modal-overlay.open .modal-container {
@@ -4138,6 +4154,9 @@ section {
     <div class="modal-container">
       <button class="modal-close-btn" aria-label="Close Modal">&times;</button>
       <div id="transcript-content" class="modal-scroll-body"></div>
+      <div class="modal-scroll-track" aria-hidden="true">
+        <div class="modal-scroll-thumb"></div>
+      </div>
     </div>
   </div>
 
@@ -4146,6 +4165,9 @@ section {
     <div class="modal-container">
       <button class="modal-close-btn" aria-label="Close Modal">&times;</button>
       <div id="certificate-content" class="modal-scroll-body"></div>
+      <div class="modal-scroll-track" aria-hidden="true">
+        <div class="modal-scroll-thumb"></div>
+      </div>
     </div>
   </div>
 
@@ -4154,6 +4176,9 @@ section {
     <div class="modal-container" style="max-width: 780px;">
       <button class="modal-close-btn" aria-label="Close Modal">&times;</button>
       <div id="case-study-content" class="modal-scroll-body"></div>
+      <div class="modal-scroll-track" aria-hidden="true">
+        <div class="modal-scroll-thumb"></div>
+      </div>
     </div>
   </div>
 
@@ -6605,6 +6630,35 @@ function initThemeMenu() {
 }
 
 /* 10. Modals Engine */
+function updateModalScrollSlider(modal) {
+  if (!modal) return;
+  const body = modal.querySelector('.modal-scroll-body');
+  const track = modal.querySelector('.modal-scroll-track');
+  const thumb = modal.querySelector('.modal-scroll-thumb');
+  if (!body || !track || !thumb) return;
+
+  const scrollHeight = body.scrollHeight;
+  const clientHeight = body.clientHeight;
+  const scrollTop = body.scrollTop;
+
+  if (scrollHeight <= clientHeight + 5) {
+    track.style.display = 'none';
+    return;
+  }
+
+  track.style.display = 'block';
+  const trackHeight = track.clientHeight;
+  
+  // Proportional thumb height clamped between 48px and 75% of track
+  const thumbHeight = Math.max(48, Math.min(trackHeight * 0.75, (clientHeight / scrollHeight) * trackHeight));
+  thumb.style.height = `${thumbHeight}px`;
+
+  const maxScroll = scrollHeight - clientHeight;
+  const maxThumbTravel = trackHeight - thumbHeight;
+  const thumbPos = maxScroll > 0 ? (scrollTop / maxScroll) * maxThumbTravel : 0;
+  thumb.style.transform = `translateY(${thumbPos}px)`;
+}
+
 function closeModal(modal) {
   if (!modal) return;
   modal.classList.remove('open');
@@ -6620,6 +6674,14 @@ function openModal(modal) {
   modal.classList.add('open');
   document.body.style.overflow = 'hidden';
   if (window.soundEngine) window.soundEngine.modalOpen();
+
+  const body = modal.querySelector('.modal-scroll-body');
+  if (body) body.scrollTop = 0;
+
+  requestAnimationFrame(() => {
+    updateModalScrollSlider(modal);
+    setTimeout(() => updateModalScrollSlider(modal), 80);
+  });
 }
 
 function initModals() {
@@ -6638,6 +6700,73 @@ function initModals() {
         closeModal(ov);
       });
     }
+
+    // Connect custom DOM scroll slider
+    const body = ov.querySelector('.modal-scroll-body');
+    const track = ov.querySelector('.modal-scroll-track');
+    const thumb = ov.querySelector('.modal-scroll-thumb');
+    
+    if (body && track && thumb) {
+      body.addEventListener('scroll', () => {
+        updateModalScrollSlider(ov);
+      }, { passive: true });
+
+      // Drag handling on thumb
+      let isDragging = false;
+      let startY = 0;
+      let startScrollTop = 0;
+
+      thumb.addEventListener('mousedown', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        isDragging = true;
+        startY = e.clientY;
+        startScrollTop = body.scrollTop;
+        document.body.style.userSelect = 'none';
+        thumb.style.cursor = 'grabbing';
+      });
+
+      window.addEventListener('mousemove', (e) => {
+        if (!isDragging) return;
+        const deltaY = e.clientY - startY;
+        const trackHeight = track.clientHeight;
+        const thumbHeight = thumb.clientHeight;
+        const maxThumbTravel = trackHeight - thumbHeight;
+        const maxScroll = body.scrollHeight - body.clientHeight;
+        if (maxThumbTravel > 0) {
+          body.scrollTop = startScrollTop + (deltaY / maxThumbTravel) * maxScroll;
+        }
+      });
+
+      window.addEventListener('mouseup', () => {
+        if (isDragging) {
+          isDragging = false;
+          document.body.style.userSelect = '';
+          thumb.style.cursor = 'grab';
+        }
+      });
+
+      // Track click to jump
+      track.addEventListener('click', (e) => {
+        if (e.target === thumb) return;
+        const rect = track.getBoundingClientRect();
+        const clickY = e.clientY - rect.top;
+        const trackHeight = track.clientHeight;
+        const maxScroll = body.scrollHeight - body.clientHeight;
+        body.scrollTo({
+          top: (clickY / trackHeight) * maxScroll,
+          behavior: 'smooth'
+        });
+      });
+    }
+  });
+
+  window.addEventListener('resize', () => {
+    overlays.forEach(ov => {
+      if (ov.classList.contains('open')) {
+        updateModalScrollSlider(ov);
+      }
+    });
   });
 
   document.addEventListener('keydown', (e) => {

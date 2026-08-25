@@ -697,6 +697,35 @@ function initThemeMenu() {
 }
 
 /* 10. Modals Engine */
+function updateModalScrollSlider(modal) {
+  if (!modal) return;
+  const body = modal.querySelector('.modal-scroll-body');
+  const track = modal.querySelector('.modal-scroll-track');
+  const thumb = modal.querySelector('.modal-scroll-thumb');
+  if (!body || !track || !thumb) return;
+
+  const scrollHeight = body.scrollHeight;
+  const clientHeight = body.clientHeight;
+  const scrollTop = body.scrollTop;
+
+  if (scrollHeight <= clientHeight + 5) {
+    track.style.display = 'none';
+    return;
+  }
+
+  track.style.display = 'block';
+  const trackHeight = track.clientHeight;
+  
+  // Proportional thumb height clamped between 48px and 75% of track
+  const thumbHeight = Math.max(48, Math.min(trackHeight * 0.75, (clientHeight / scrollHeight) * trackHeight));
+  thumb.style.height = `${thumbHeight}px`;
+
+  const maxScroll = scrollHeight - clientHeight;
+  const maxThumbTravel = trackHeight - thumbHeight;
+  const thumbPos = maxScroll > 0 ? (scrollTop / maxScroll) * maxThumbTravel : 0;
+  thumb.style.transform = `translateY(${thumbPos}px)`;
+}
+
 function closeModal(modal) {
   if (!modal) return;
   modal.classList.remove('open');
@@ -712,6 +741,14 @@ function openModal(modal) {
   modal.classList.add('open');
   document.body.style.overflow = 'hidden';
   if (window.soundEngine) window.soundEngine.modalOpen();
+
+  const body = modal.querySelector('.modal-scroll-body');
+  if (body) body.scrollTop = 0;
+
+  requestAnimationFrame(() => {
+    updateModalScrollSlider(modal);
+    setTimeout(() => updateModalScrollSlider(modal), 80);
+  });
 }
 
 function initModals() {
@@ -730,6 +767,73 @@ function initModals() {
         closeModal(ov);
       });
     }
+
+    // Connect custom DOM scroll slider
+    const body = ov.querySelector('.modal-scroll-body');
+    const track = ov.querySelector('.modal-scroll-track');
+    const thumb = ov.querySelector('.modal-scroll-thumb');
+    
+    if (body && track && thumb) {
+      body.addEventListener('scroll', () => {
+        updateModalScrollSlider(ov);
+      }, { passive: true });
+
+      // Drag handling on thumb
+      let isDragging = false;
+      let startY = 0;
+      let startScrollTop = 0;
+
+      thumb.addEventListener('mousedown', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        isDragging = true;
+        startY = e.clientY;
+        startScrollTop = body.scrollTop;
+        document.body.style.userSelect = 'none';
+        thumb.style.cursor = 'grabbing';
+      });
+
+      window.addEventListener('mousemove', (e) => {
+        if (!isDragging) return;
+        const deltaY = e.clientY - startY;
+        const trackHeight = track.clientHeight;
+        const thumbHeight = thumb.clientHeight;
+        const maxThumbTravel = trackHeight - thumbHeight;
+        const maxScroll = body.scrollHeight - body.clientHeight;
+        if (maxThumbTravel > 0) {
+          body.scrollTop = startScrollTop + (deltaY / maxThumbTravel) * maxScroll;
+        }
+      });
+
+      window.addEventListener('mouseup', () => {
+        if (isDragging) {
+          isDragging = false;
+          document.body.style.userSelect = '';
+          thumb.style.cursor = 'grab';
+        }
+      });
+
+      // Track click to jump
+      track.addEventListener('click', (e) => {
+        if (e.target === thumb) return;
+        const rect = track.getBoundingClientRect();
+        const clickY = e.clientY - rect.top;
+        const trackHeight = track.clientHeight;
+        const maxScroll = body.scrollHeight - body.clientHeight;
+        body.scrollTo({
+          top: (clickY / trackHeight) * maxScroll,
+          behavior: 'smooth'
+        });
+      });
+    }
+  });
+
+  window.addEventListener('resize', () => {
+    overlays.forEach(ov => {
+      if (ov.classList.contains('open')) {
+        updateModalScrollSlider(ov);
+      }
+    });
   });
 
   document.addEventListener('keydown', (e) => {
