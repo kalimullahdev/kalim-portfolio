@@ -1701,36 +1701,38 @@
 .modal-scroll-body {
   width: 100%;
   max-height: calc(100vh - 6rem);
-  overflow-y: auto;
+  overflow-y: scroll !important; /* Always permanently visible */
   overflow-x: hidden;
+  scrollbar-gutter: stable;
   -webkit-overflow-scrolling: touch;
   padding: 3rem 2.5rem; /* Generous top, bottom, and side padding inside dialog */
   scrollbar-width: thin;
-  scrollbar-color: var(--accent-primary) rgba(255, 255, 255, 0.05);
+  scrollbar-color: var(--accent-primary) rgba(255, 255, 255, 0.08);
 }
 
 .modal-scroll-body::-webkit-scrollbar {
-  width: 6px;
-  display: block;
+  width: 8px !important;
+  display: block !important;
 }
 
 .modal-scroll-body::-webkit-scrollbar-track {
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(255, 255, 255, 0.08) !important;
   border-radius: var(--radius-full);
-  margin: 1.5rem 0.25rem; /* Safely inset inside container padding */
+  margin: 1.25rem 0.25rem;
 }
 
 .modal-scroll-body::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, var(--accent-primary), var(--accent-cyan));
+  background: linear-gradient(180deg, var(--accent-primary), var(--accent-cyan)) !important;
   border-radius: var(--radius-full);
-  border: none;
-  min-height: 40px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  min-height: 48px;
+  box-shadow: 0 0 10px rgba(99, 102, 241, 0.4);
   transition: background var(--transition-fast), box-shadow var(--transition-fast);
 }
 
 .modal-scroll-body::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(180deg, var(--accent-cyan), #38bdf8);
-  box-shadow: 0 0 12px rgba(6, 182, 212, 0.6);
+  background: linear-gradient(180deg, var(--accent-cyan), #38bdf8) !important;
+  box-shadow: 0 0 14px rgba(6, 182, 212, 0.8);
 }
 
 .modal-overlay.open .modal-container {
