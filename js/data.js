@@ -79,8 +79,8 @@ window.PORTFOLIO_DATA = {
         icon: "💳",
         description: "Payment gateways, in-app purchases, clean architecture, and project stabilization.",
         skills: [
-          { name: "Stripe Payment Integration", desc: "Stripe Checkout, Elements, Webhooks, payment sheets, and split payments", tags: ["Stripe", "Payments"] },
-          { name: "In-App Purchases (RevenueCat)", desc: "Cross-platform paywalls, Apple StoreKit, Google Play Billing subscriptions", tags: ["RevenueCat", "IAP"] },
+          { name: "Payment Gateway Integrations", desc: "Multi-gateway Checkout, Webhooks, payment sheets, secure card processing, and split payments", tags: ["Payments", "Gateways"] },
+          { name: "In-App Purchases & Subscriptions", desc: "Cross-platform paywalls, Apple StoreKit, Google Play Billing subscriptions, and receipts", tags: ["IAP", "Subscriptions"] },
           { name: "Clean Architecture", desc: "Modular widget hierarchies, reusable component libraries, and clean naming conventions", tags: ["Clean Code", "Maintainability"] },
           { name: "Code Stabilization & Debugging", desc: "Fixing broken logic, compiling issues, infinite loading states, and refactoring complex flows", tags: ["Debugging", "Refactoring"] }
         ]
@@ -508,13 +508,13 @@ window.PORTFOLIO_DATA = {
       id: "kinetix",
       title: "Kinetix — E-Commerce Shopping App",
       category: "ecommerce",
-      categoryLabel: "Flutter • 25 Screens • Stripe",
+      categoryLabel: "Flutter • 25 Screens • Payments",
       tagline: "25-screen complete shopping journey from product discovery and wishlist to multi-payment checkout and order tracking.",
       description: "A complete, production-ready e-commerce mobile application covering the entire retail lifecycle across 25 dedicated screens. Built solo (UI/UX design, Flutter development, Firebase backend) with zero outside assistance.",
       image: "assets/images/project-kinetix.jpg",
       metrics: [
         { label: "Screens", value: "25 Total" },
-        { label: "Payments", value: "Stripe & Cards" },
+        { label: "Payments", value: "Multi-Gateway" },
         { label: "Build", value: "Solo End-to-End" }
       ],
       screensPdfs: {
@@ -522,16 +522,16 @@ window.PORTFOLIO_DATA = {
         light: "assets/docs/projects/kinetix-screens-light.pdf"
       },
       screensPdfUrl: "assets/docs/projects/kinetix-screens-dark.pdf",
-      tech: ["Flutter SDK", "Dart", "Firebase", "Stripe API", "Cart Engine", "Wishlist", "Order Tracking"],
+      tech: ["Flutter SDK", "Dart", "Firebase", "Payment APIs", "Cart Engine", "Wishlist", "Order Tracking"],
       featured: true,
       caseStudy: {
         challenge: "Delivering a complete, frictionless mobile retail experience across 25 screens with live cart totals, discount voucher applications, and secure multi-method payment checkout without frame drops.",
-        solution: "Architected 25 modular screens with clean state hierarchies, wishlist storage, interactive product previews, and webhook-verified Stripe checkout.",
+        solution: "Architected 25 modular screens with clean state hierarchies, wishlist storage, interactive product previews, and webhook-verified secure checkout.",
         features: [
           "Onboarding & Auth: Splash screen, onboarding slide, sign-in/auth",
           "Discovery: Home page, categories, product listing, product details, global search",
           "Shopping & Cart: Wishlist storage, interactive shopping cart with live price calculations",
-          "Checkout & Payments: Multi-Step checkout, shipping addresses, Stripe payment integration",
+          "Checkout & Payments: Multi-Step checkout, shipping addresses, secure payment gateway integration",
           "Post-Purchase: Live order tracking and complete order history",
           "Account & Engagement: User profile, notifications, reviews & ratings, coupons & promotions",
           "UX States: Empty cart state, loading skeletons, and offline error recovery"

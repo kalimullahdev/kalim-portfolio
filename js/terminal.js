@@ -157,7 +157,7 @@ class PortfolioTerminal {
     return `
 <div style="margin:0.5rem 0;line-height:1.7;">
   <div style="color:var(--accent-cyan);font-weight:700;margin-bottom:0.25rem;">SYSTEM COMMANDS:</div>
-  <div>• <strong style="color:var(--accent-cyan);">skills</strong>       : Technical stack (Flutter, FlutterFlow, Firebase, Supabase, AI, REST APIs, Stripe)</div>
+  <div>• <strong style="color:var(--accent-cyan);">skills</strong>       : Technical stack (Flutter, FlutterFlow, Firebase, Supabase, AI, REST APIs, Payments)</div>
   <div>• <strong style="color:var(--accent-cyan);">projects</strong>     : Production applications (UniChatAi, Kinetix, Flavordash, Pulse Chat)</div>
   <div>• <strong style="color:var(--accent-cyan);">experience</strong>   : Professional trajectory (Upwork, Fiverr, Internship)</div>
   <div>• <strong style="color:var(--accent-cyan);">education</strong>    : 17-year schooling timeline (BSSE, FSc, Start to Matric)</div>
