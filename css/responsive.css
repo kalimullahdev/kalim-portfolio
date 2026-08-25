@@ -1,0 +1,127 @@
+/**
+ * Responsive Breakpoints & Mobile Adaptations
+ */
+
+@media (max-width: 1024px) {
+  .desktop-nav {
+    display: none !important;
+  }
+
+  .mobile-menu-btn {
+    display: flex !important;
+  }
+
+  .nav-hire-btn {
+    display: none !important;
+  }
+
+  .hero-grid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  .bento-span-8, .bento-span-4, .bento-span-6 {
+    grid-column: span 12;
+  }
+
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .skills-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .testimonials-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  :root {
+    --header-height: 64px;
+  }
+
+  .site-header {
+    top: 8px;
+    width: calc(100% - 1rem);
+    height: 56px;
+    padding: 0;
+  }
+
+  .nav-container {
+    padding: 0 0.85rem;
+  }
+
+  .brand-avatar-box {
+    width: 32px;
+    height: 32px;
+  }
+
+  .brand-name {
+    font-size: 0.9375rem;
+  }
+
+  .brand-sub {
+    display: none;
+  }
+
+  .action-btn {
+    width: 32px;
+    height: 32px;
+  }
+
+  .action-btn svg {
+    width: 15px;
+    height: 15px;
+  }
+
+  .mobile-menu-btn {
+    width: 34px;
+    height: 34px;
+  }
+
+  .hero-headline {
+    font-size: 2.25rem;
+    min-height: 4.6em;
+  }
+
+  .hero-stats-strip {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+
+  .semester-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .timeline-item {
+    padding-left: 45px;
+  }
+
+  .timeline-line {
+    left: 14px;
+  }
+
+  .timeline-node {
+    left: 14px;
+    width: 20px;
+    height: 20px;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .modal-container {
+    padding: 1.5rem;
+  }
+}

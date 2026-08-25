@@ -1,0 +1,73 @@
+%PDF-1.4
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [3 0 R] /Count 1 >>
+endobj
+3 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Contents 4 0 R /Resources << /Font << /F1 5 0 R /F2 6 0 R >> >> >>
+endobj
+4 0 obj
+<< /Length 1400 >>
+stream
+BT
+/F1 16 Tf
+50 750 Td
+(Pulse Chat - Full-Featured Messaging App) Tj
+ET
+BT
+/F2 10 Tf
+50 730 Td
+(17-Screen Real-Time Messaging Suite | 17 Polished Mobile Screens (100% Figma-to-Code)) Tj
+ET
+BT
+/F2 10 Tf
+50 710 Td
+(Stack: Flutter SDK, Dart, Clean Architecture, Voice & Video Call UI, Firebase) Tj
+ET
+BT
+/F2 9 Tf
+50 680 Td
+14 TL
+() '
+(------------------------------------------------------------) '
+(ARCHITECTURE & SCREEN SPECIFICATIONS) '
+(------------------------------------------------------------) '
+() '
+([Screen Group 1] Onboarding & Security \(3 Screens\): Branded Welcome Splash, Encrypted Onboarding, Phone/SMS Verification) '
+([Screen Group 2] Core Messaging \(4 Screens\): Unified Inbox Feed, 1:1 Direct Chat, Group Channel, Zero-Inbox State) '
+([Screen Group 3] Calling Interfaces \(2 Screens\): High-Fidelity Voice Call UI, Full-Screen Video Calling UI) '
+([Screen Group 4] Contacts & Profile \(3 Screens\): Searchable Address Book, Profile & Media Gallery, Global Search) '
+([Screen Group 5] Supporting & Reliability \(5 Screens\): Media Attachment Tray, Notification Center, Settings, Privacy Controls, Offline Network Banner) '
+() '
+(------------------------------------------------------------) '
+(VERIFIED UPWORK PROFILE:) '
+(https://www.upwork.com/freelancers/kalimullahdev) '
+() '
+(Motto: Plan. Build. Test. Deliver.) '
+(Flutter, FlutterFlow, Firebase & Supabase Architecture) '
+ET
+
+endstream
+endobj
+5 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold >>
+endobj
+6 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
+endobj
+xref
+0 7
+0000000000 65535 f 
+0000000010 00000 n 
+0000000060 00000 n 
+0000000117 00000 n 
+0000000253 00000 n 
+0000000000 00000 n 
+0000000000 00000 n 
+trailer
+<< /Size 7 /Root 1 0 R >>
+startxref
+1700
+%%EOF

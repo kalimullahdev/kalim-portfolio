@@ -1,0 +1,74 @@
+%PDF-1.4
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [3 0 R] /Count 1 >>
+endobj
+3 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Contents 4 0 R /Resources << /Font << /F1 5 0 R /F2 6 0 R >> >> >>
+endobj
+4 0 obj
+<< /Length 1528 >>
+stream
+BT
+/F1 16 Tf
+50 750 Td
+(Flavordash - Food Delivery App) Tj
+ET
+BT
+/F2 10 Tf
+50 730 Td
+(32-Screen On-Demand Restaurant & Courier Platform | 32 Dedicated Mobile Screens) Tj
+ET
+BT
+/F2 10 Tf
+50 710 Td
+(Stack: FlutterFlow, Dart Custom Actions, Firebase, Google Maps API, Stripe) Tj
+ET
+BT
+/F2 9 Tf
+50 680 Td
+14 TL
+() '
+(------------------------------------------------------------) '
+(ARCHITECTURE & SCREEN SPECIFICATIONS) '
+(------------------------------------------------------------) '
+() '
+([Screen Group 1] Onboarding & Auth \(5 Screens\): Splash, Onboarding Carousel, Login, Register, Password Recovery) '
+([Screen Group 2] Discovery & Menus \(5 Screens\): Location Home, Restaurant Directory, Cuisine Categories, Filter Drawer, Detail Schedule) '
+([Screen Group 3] Ordering & Customizer \(4 Screens\): Food Menu, Nutrition Specs, Topping/Addon Modal, Active Cart) '
+([Screen Group 4] Checkout & Live Fulfillment \(4 Screens\): Address Selector, Summary & Voucher, Stripe Payment, Live GPS Driver Map) '
+([Screen Group 5] Loyalty & Engagement \(5 Screens\): Favorites, Flavor VIP Rewards, Promo Manager, Reviews, Order Stream) '
+([Screen Group 6] Account & UX States \(9 Screens\): Profile Hub, Saved Addresses, Notifications, Dark Mode, Empty Bag, Loading Skeletons) '
+() '
+(------------------------------------------------------------) '
+(VERIFIED UPWORK PROFILE:) '
+(https://www.upwork.com/freelancers/kalimullahdev) '
+() '
+(Motto: Plan. Build. Test. Deliver.) '
+(Flutter, FlutterFlow, Firebase & Supabase Architecture) '
+ET
+
+endstream
+endobj
+5 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold >>
+endobj
+6 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
+endobj
+xref
+0 7
+0000000000 65535 f 
+0000000010 00000 n 
+0000000060 00000 n 
+0000000117 00000 n 
+0000000253 00000 n 
+0000000000 00000 n 
+0000000000 00000 n 
+trailer
+<< /Size 7 /Root 1 0 R >>
+startxref
+1828
+%%EOF

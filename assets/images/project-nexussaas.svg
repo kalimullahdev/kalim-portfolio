@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" width="100%" height="100%">
+  <defs>
+    <linearGradient id="nexusGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b1120"/>
+      <stop offset="100%" stop-color="#1e293b"/>
+    </linearGradient>
+    <linearGradient id="blueCyanGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3b82f6"/>
+      <stop offset="100%" stop-color="#38bdf8"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="450" fill="url(#nexusGrad)"/>
+  <!-- UI Dashboard Panels -->
+  <rect x="160" y="100" width="480" height="250" rx="16" fill="rgba(15, 23, 42, 0.8)" stroke="rgba(255,255,255,0.1)" stroke-width="2"/>
+  <rect x="190" y="130" width="120" height="70" rx="8" fill="rgba(59, 130, 246, 0.2)" stroke="#3b82f6"/>
+  <rect x="330" y="130" width="120" height="70" rx="8" fill="rgba(56, 189, 248, 0.2)" stroke="#38bdf8"/>
+  <rect x="470" y="130" width="140" height="70" rx="8" fill="rgba(99, 102, 241, 0.2)" stroke="#6366f1"/>
+  <!-- Bar chart in panel -->
+  <rect x="200" y="240" width="25" height="70" rx="4" fill="#3b82f6"/>
+  <rect x="240" y="220" width="25" height="90" rx="4" fill="#38bdf8"/>
+  <rect x="280" y="250" width="25" height="60" rx="4" fill="#818cf8"/>
+  <rect x="320" y="200" width="25" height="110" rx="4" fill="#06b6d4"/>
+</svg>
