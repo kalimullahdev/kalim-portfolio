@@ -606,22 +606,28 @@
 }
 
 .visual-code-block {
-  background: var(--bg-primary);
+  background: #060913;
   border-radius: var(--radius-md);
   padding: 1.25rem;
   font-family: var(--font-mono);
   font-size: 0.8125rem;
   line-height: 1.6;
-  color: #cbd5e1;
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  color: #f1f5f9;
+  border: 1px solid rgba(99, 102, 241, 0.2);
   overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
-.code-keyword { color: #f43f5e; font-weight: 600; }
-.code-type { color: #06b6d4; }
-.code-func { color: #60a5fa; }
-.code-string { color: #34d399; }
-.code-comment { color: #64748b; font-style: italic; }
+.visual-code-block code {
+  color: #f8fafc;
+  font-family: inherit;
+}
+
+.code-keyword { color: #f43f5e; font-weight: 700; }
+.code-type { color: #06b6d4; font-weight: 600; }
+.code-func { color: #818cf8; font-weight: 600; }
+.code-string { color: #34d399; font-weight: 500; }
+.code-comment { color: #94a3b8; font-style: italic; }
 
 .visual-floating-badge {
   position: absolute;
