@@ -30,36 +30,35 @@ function initRoleRotator() {
   if (!target) return;
 
   const roles = [
-    "Flutter & FlutterFlow",
-    "Firebase & Supabase",
-    "Generative AI & LLMs",
-    "REST APIs & Payments"
+    "Flutter & FlutterFlow Specialist",
+    "Firebase & Supabase Architect",
+    "Generative AI & LLM Engineer",
+    "REST API & Payment Architect"
   ];
   let roleIdx = 0;
 
-  // Initialize initial state
+  // Set initial text
   target.textContent = roles[0];
-  target.style.display = 'inline-block';
-  target.style.transition = 'opacity 0.35s cubic-bezier(0.4, 0, 0.2, 1), transform 0.35s cubic-bezier(0.4, 0, 0.2, 1)';
   target.style.opacity = '1';
   target.style.transform = 'translateY(0)';
+  target.style.transition = 'opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1), transform 0.4s cubic-bezier(0.4, 0, 0.2, 1)';
 
   setInterval(() => {
-    // Smooth fade & slide up
+    // Fade out and translate up slightly
     target.style.opacity = '0';
-    target.style.transform = 'translateY(-6px)';
+    target.style.transform = 'translateY(-8px)';
 
     setTimeout(() => {
       roleIdx = (roleIdx + 1) % roles.length;
       target.textContent = roles[roleIdx];
-      target.style.transform = 'translateY(6px)';
+      target.style.transform = 'translateY(8px)';
 
-      // Trigger reflow for smooth animation
+      // Trigger reflow then fade in
       void target.offsetWidth;
       target.style.opacity = '1';
       target.style.transform = 'translateY(0)';
-    }, 350);
-  }, 3000);
+    }, 400);
+  }, 3200);
 }
 
 /* 2. Interactive 3D Physics Tilt */
