@@ -24,46 +24,42 @@ document.addEventListener('DOMContentLoaded', () => {
   initAudioToggle();
 });
 
-/* 1. Kinetic Role Rotator */
+/* 1. Kinetic Zero-Layout-Shift Role Rotator */
 function initRoleRotator() {
   const target = document.getElementById('role-rotator');
   if (!target) return;
 
   const roles = [
-    "Flutter & FlutterFlow Specialist",
-    "Firebase & Supabase Architect",
-    "Generative AI & LLM Engineer",
-    "REST API & Payment Architect"
+    "Flutter & FlutterFlow",
+    "Firebase & Supabase",
+    "Generative AI & LLMs",
+    "REST APIs & Payments"
   ];
   let roleIdx = 0;
-  let charIdx = 0;
-  let isDeleting = false;
 
-  function type() {
-    const current = roles[roleIdx];
-    if (isDeleting) {
-      target.textContent = current.substring(0, charIdx - 1);
-      charIdx--;
-    } else {
-      target.textContent = current.substring(0, charIdx + 1);
-      charIdx++;
-    }
+  // Initialize initial state
+  target.textContent = roles[0];
+  target.style.display = 'inline-block';
+  target.style.transition = 'opacity 0.35s cubic-bezier(0.4, 0, 0.2, 1), transform 0.35s cubic-bezier(0.4, 0, 0.2, 1)';
+  target.style.opacity = '1';
+  target.style.transform = 'translateY(0)';
 
-    let speed = isDeleting ? 35 : 75;
+  setInterval(() => {
+    // Smooth fade & slide up
+    target.style.opacity = '0';
+    target.style.transform = 'translateY(-6px)';
 
-    if (!isDeleting && charIdx === current.length) {
-      speed = 2200;
-      isDeleting = true;
-    } else if (isDeleting && charIdx === 0) {
-      isDeleting = false;
+    setTimeout(() => {
       roleIdx = (roleIdx + 1) % roles.length;
-      speed = 400;
-    }
+      target.textContent = roles[roleIdx];
+      target.style.transform = 'translateY(6px)';
 
-    setTimeout(type, speed);
-  }
-
-  type();
+      // Trigger reflow for smooth animation
+      void target.offsetWidth;
+      target.style.opacity = '1';
+      target.style.transform = 'translateY(0)';
+    }, 350);
+  }, 3000);
 }
 
 /* 2. Interactive 3D Physics Tilt */
