@@ -527,20 +527,24 @@
 
   /* Modals */
   .modal-overlay {
-    padding: 0.75rem;
+    padding: 2.5rem 1rem;
+    z-index: 99999;
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
   }
 
   .modal-container {
-    padding: 1.5rem 1.25rem;
+    padding: 2.5rem 1.5rem;
     border-radius: var(--radius-lg);
-    max-height: 92vh;
+    max-height: calc(100vh - 5rem);
+    margin: auto;
   }
 
   .modal-close-btn {
-    top: 1rem;
-    right: 1rem;
-    width: 32px;
-    height: 32px;
+    top: 1.25rem;
+    right: 1.25rem;
+    width: 34px;
+    height: 34px;
   }
 
   /* Command Palette (Cmd+K) */
@@ -669,9 +673,14 @@
     height: 16px;
   }
 
+  .modal-overlay {
+    padding: 1.75rem 0.6rem;
+  }
+
   .modal-container {
-    padding: 1.25rem 0.85rem;
+    padding: 2.25rem 1.15rem;
     border-radius: var(--radius-md);
+    max-height: calc(100vh - 3.5rem);
   }
 }
 
