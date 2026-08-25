@@ -30,10 +30,10 @@ function initRoleRotator() {
   if (!target) return;
 
   const roles = [
-    "Flutter & FlutterFlow Specialist",
-    "Firebase & Supabase Architect",
-    "Generative AI & LLM Engineer",
-    "REST API & Payment Architect"
+    "Flutter & FlutterFlow",
+    "Firebase & Supabase",
+    "Generative AI & LLMs",
+    "REST APIs & Stripe Payments"
   ];
   let roleIdx = 0;
 
