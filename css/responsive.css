@@ -560,6 +560,13 @@
     height: 34px;
   }
 
+  .modal-scroll-track {
+    top: 3.5rem;
+    bottom: 1.25rem;
+    right: 5px;
+    width: 4px;
+  }
+
   /* Command Palette (Cmd+K) */
   .cmd-palette-modal {
     max-width: 100%;
