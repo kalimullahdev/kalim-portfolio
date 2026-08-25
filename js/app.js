@@ -348,12 +348,12 @@ function renderProjects(items) {
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
         </button>
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.5rem;">
-          <a href="${p.screensPdfs?.dark || p.screensPdfUrl || '#'}" download="${p.id}-screens-dark.pdf" target="_blank" class="btn btn-secondary" style="justify-content:center;padding:0.55rem 0.9rem;font-size:0.75rem;">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="12" y1="18" x2="12" y2="12"></line><line x1="9" y1="15" x2="12" y2="18"></line><line x1="15" y1="15" x2="12" y2="18"></line></svg>
+          <a href="${p.screensPdfs?.dark || p.screensPdfUrl || '#'}" target="_blank" rel="noopener noreferrer" class="btn btn-secondary" style="justify-content:center;padding:0.55rem 0.9rem;font-size:0.75rem;">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
             <span>🌙 Dark Screens</span>
           </a>
-          <a href="${p.screensPdfs?.light || p.screensPdfUrl || '#'}" download="${p.id}-screens-light.pdf" target="_blank" class="btn btn-secondary" style="justify-content:center;padding:0.55rem 0.9rem;font-size:0.75rem;">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="12" y1="18" x2="12" y2="12"></line><line x1="9" y1="15" x2="12" y2="18"></line><line x1="15" y1="15" x2="12" y2="18"></line></svg>
+          <a href="${p.screensPdfs?.light || p.screensPdfUrl || '#'}" target="_blank" rel="noopener noreferrer" class="btn btn-secondary" style="justify-content:center;padding:0.55rem 0.9rem;font-size:0.75rem;">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
             <span>☀️ Light Screens</span>
           </a>
         </div>
@@ -882,12 +882,12 @@ window.openCaseStudyModal = function(id) {
         <h3 style="font-size:1.6rem;font-weight:700;margin-top:0.25rem;">${p.title}</h3>
       </div>
       <div style="display:flex;gap:0.5rem;align-items:center;flex-wrap:wrap;">
-        <a href="${p.screensPdfs?.dark || p.screensPdfUrl || '#'}" download="${p.id}-screens-dark.pdf" target="_blank" class="btn btn-secondary" style="font-size:0.75rem;padding:0.45rem 1rem;">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="12" y1="18" x2="12" y2="12"></line><line x1="9" y1="15" x2="12" y2="18"></line><line x1="15" y1="15" x2="12" y2="18"></line></svg>
+        <a href="${p.screensPdfs?.dark || p.screensPdfUrl || '#'}" target="_blank" rel="noopener noreferrer" class="btn btn-secondary" style="font-size:0.75rem;padding:0.45rem 1rem;">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
           <span>🌙 Dark Screens</span>
         </a>
-        <a href="${p.screensPdfs?.light || p.screensPdfUrl || '#'}" download="${p.id}-screens-light.pdf" target="_blank" class="btn btn-secondary" style="font-size:0.75rem;padding:0.45rem 1rem;">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="12" y1="18" x2="12" y2="12"></line><line x1="9" y1="15" x2="12" y2="18"></line><line x1="15" y1="15" x2="12" y2="18"></line></svg>
+        <a href="${p.screensPdfs?.light || p.screensPdfUrl || '#'}" target="_blank" rel="noopener noreferrer" class="btn btn-secondary" style="font-size:0.75rem;padding:0.45rem 1rem;">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
           <span>☀️ Light Screens</span>
         </a>
         <span class="timeline-status-badge">Production Architecture</span>
@@ -938,11 +938,11 @@ window.openCaseStudyModal = function(id) {
         ${p.tech.map(t => `<span class="tech-tag">${t}</span>`).join('')}
       </div>
       <div style="display:flex;gap:0.5rem;flex-wrap:wrap;align-items:center;">
-        <a href="${p.screensPdfs?.dark || p.screensPdfUrl || '#'}" download="${p.id}-screens-dark.pdf" target="_blank" class="btn btn-secondary" style="font-size:0.8125rem;padding:0.55rem 1.1rem;">
-          <span>🌙 Dark Theme Screens</span>
+        <a href="${p.screensPdfs?.dark || p.screensPdfUrl || '#'}" target="_blank" rel="noopener noreferrer" class="btn btn-secondary" style="font-size:0.8125rem;padding:0.55rem 1.1rem;">
+          <span>🌙 Dark Theme Screens ↗</span>
         </a>
-        <a href="${p.screensPdfs?.light || p.screensPdfUrl || '#'}" download="${p.id}-screens-light.pdf" target="_blank" class="btn btn-secondary" style="font-size:0.8125rem;padding:0.55rem 1.1rem;">
-          <span>☀️ Light Theme Screens</span>
+        <a href="${p.screensPdfs?.light || p.screensPdfUrl || '#'}" target="_blank" rel="noopener noreferrer" class="btn btn-secondary" style="font-size:0.8125rem;padding:0.55rem 1.1rem;">
+          <span>☀️ Light Theme Screens ↗</span>
         </a>
         <a href="https://www.upwork.com/freelancers/kalimullahdev" target="_blank" class="btn btn-primary" style="font-size:0.8125rem;">
           <span>Hire Kalim for Similar Builds ↗</span>

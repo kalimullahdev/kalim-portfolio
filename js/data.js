@@ -484,10 +484,10 @@ window.PORTFOLIO_DATA = {
         { label: "Architecture", value: "100% Solo Build" }
       ],
       screensPdfs: {
-        dark: "assets/docs/projects/unichatai-screens-dark.pdf",
-        light: "assets/docs/projects/unichatai-screens-light.pdf"
+        dark: "https://drive.google.com/file/d/1hqtjvlznFkdqeOvnl7jCPz-y-YHqixQS/view?usp=sharing",
+        light: "https://drive.google.com/file/d/1zCnspS6eyxPaZwNqkGLuf2x_kLbXzZnd/view?usp=sharing"
       },
-      screensPdfUrl: "assets/docs/projects/unichatai-screens-dark.pdf",
+      screensPdfUrl: "https://drive.google.com/file/d/1hqtjvlznFkdqeOvnl7jCPz-y-YHqixQS/view?usp=sharing",
       tech: ["Flutter SDK", "Dart", "Firebase", "Claude API", "ChatGPT API", "Google Gemini", "DALL-E", "Voice Input", "Markdown Streaming"],
       featured: true,
       caseStudy: {
@@ -518,10 +518,10 @@ window.PORTFOLIO_DATA = {
         { label: "Build", value: "Solo End-to-End" }
       ],
       screensPdfs: {
-        dark: "assets/docs/projects/kinetix-screens-dark.pdf",
-        light: "assets/docs/projects/kinetix-screens-light.pdf"
+        dark: "https://drive.google.com/file/d/1RY2KF_-H2OlSl8jlcNiWS9H2VJ1eUTmy/view?usp=sharing",
+        light: "https://drive.google.com/file/d/1gZ-wmh-Wq2u5CfO-XpzI6IthCmKeLK2t/view?usp=sharing"
       },
-      screensPdfUrl: "assets/docs/projects/kinetix-screens-dark.pdf",
+      screensPdfUrl: "https://drive.google.com/file/d/1RY2KF_-H2OlSl8jlcNiWS9H2VJ1eUTmy/view?usp=sharing",
       tech: ["Flutter SDK", "Dart", "Firebase", "Payment APIs", "Cart Engine", "Wishlist", "Order Tracking"],
       featured: true,
       caseStudy: {
@@ -553,10 +553,10 @@ window.PORTFOLIO_DATA = {
         { label: "Features", value: "Live GPS Tracking" }
       ],
       screensPdfs: {
-        dark: "assets/docs/projects/flavordash-screens-dark.pdf",
-        light: "assets/docs/projects/flavordash-screens-light.pdf"
+        dark: "https://drive.google.com/file/d/14U8yb2HlTl6jA9GkOtlBlz0eQdXYF3M1/view?usp=sharing",
+        light: "https://drive.google.com/file/d/18cw4OX4If4OR80i9h6A4wPIBodqxqNtb/view?usp=sharing"
       },
-      screensPdfUrl: "assets/docs/projects/flavordash-screens-dark.pdf",
+      screensPdfUrl: "https://drive.google.com/file/d/14U8yb2HlTl6jA9GkOtlBlz0eQdXYF3M1/view?usp=sharing",
       tech: ["FlutterFlow", "Dart Custom Logic", "Firebase", "Live GPS Tracking", "Cuisine Filters", "Dark Mode"],
       featured: true,
       caseStudy: {
@@ -588,10 +588,10 @@ window.PORTFOLIO_DATA = {
         { label: "Figma to Code", value: "100% Faithful" }
       ],
       screensPdfs: {
-        dark: "assets/docs/projects/pulsechat-screens-dark.pdf",
-        light: "assets/docs/projects/pulsechat-screens-light.pdf"
+        dark: "https://drive.google.com/file/d/1wjqg8wq1HVi0XrRGSaPeHQCYyPU0HE-v/view?usp=sharing",
+        light: "https://drive.google.com/file/d/1cgoVbAoN68sMeWQFU3GQCBk-nusu-0nU/view?usp=sharing"
       },
-      screensPdfUrl: "assets/docs/projects/pulsechat-screens-dark.pdf",
+      screensPdfUrl: "https://drive.google.com/file/d/1wjqg8wq1HVi0XrRGSaPeHQCYyPU0HE-v/view?usp=sharing",
       tech: ["Flutter SDK", "Dart", "Clean Architecture", "Voice & Video Call UI", "Media Sharing", "Figma to Code"],
       featured: true,
       caseStudy: {
