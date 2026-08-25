@@ -13,6 +13,7 @@ class InteractiveBackground {
     this.particleCount = window.innerWidth < 768 ? 40 : 85;
     this.connectionDistance = window.innerWidth < 768 ? 90 : 130;
     this.animationFrameId = null;
+    this.isRunning = true;
 
     this.init();
   }
@@ -45,9 +46,13 @@ class InteractiveBackground {
   }
 
   bindEvents() {
+    let resizeTimer = null;
     window.addEventListener('resize', () => {
-      this.resize();
-      this.createParticles();
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(() => {
+        this.resize();
+        this.createParticles();
+      }, 150);
     });
 
     window.addEventListener('mousemove', (e) => {
@@ -59,9 +64,25 @@ class InteractiveBackground {
       this.mouse.x = null;
       this.mouse.y = null;
     });
+
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) {
+        this.isRunning = false;
+        if (this.animationFrameId) {
+          cancelAnimationFrame(this.animationFrameId);
+          this.animationFrameId = null;
+        }
+      } else {
+        if (!this.isRunning) {
+          this.isRunning = true;
+          this.animate();
+        }
+      }
+    });
   }
 
   animate() {
+    if (!this.isRunning) return;
     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
 
     for (let i = 0; i < this.particles.length; i++) {

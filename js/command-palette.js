@@ -81,6 +81,7 @@ class CommandPalette {
   open() {
     this.isOpen = true;
     if (this.overlay) this.overlay.classList.add('open');
+    document.body.style.overflow = 'hidden';
     if (this.input) {
       this.input.value = '';
       this.input.focus();
@@ -92,6 +93,10 @@ class CommandPalette {
   close() {
     this.isOpen = false;
     if (this.overlay) this.overlay.classList.remove('open');
+    const openModals = document.querySelectorAll('.modal-overlay.open');
+    if (openModals.length === 0) {
+      document.body.style.overflow = '';
+    }
   }
 
   toggle() {
@@ -152,7 +157,12 @@ class CommandPalette {
   navigate(hash) {
     const target = document.querySelector(hash);
     if (target) {
-      target.scrollIntoView({ behavior: 'smooth' });
+      const headerOffset = 75;
+      const targetPos = target.getBoundingClientRect().top + window.pageYOffset - headerOffset;
+      window.scrollTo({
+        top: Math.max(0, targetPos),
+        behavior: 'smooth'
+      });
     }
   }
 

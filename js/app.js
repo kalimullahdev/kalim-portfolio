@@ -33,7 +33,7 @@ function initRoleRotator() {
     "Flutter & FlutterFlow",
     "Firebase & Supabase",
     "Generative AI & LLMs",
-    "REST APIs & Stripe Payments"
+    "REST APIs & Payments"
   ];
   let roleIdx = 0;
 
@@ -697,22 +697,37 @@ function initThemeMenu() {
 }
 
 /* 10. Modals Engine */
+function closeModal(modal) {
+  if (!modal) return;
+  modal.classList.remove('open');
+  const openModals = document.querySelectorAll('.modal-overlay.open');
+  if (openModals.length === 0) {
+    document.body.style.overflow = '';
+  }
+  if (window.soundEngine) window.soundEngine.modalClose();
+}
+
+function openModal(modal) {
+  if (!modal) return;
+  modal.classList.add('open');
+  document.body.style.overflow = 'hidden';
+  if (window.soundEngine) window.soundEngine.modalOpen();
+}
+
 function initModals() {
   const overlays = document.querySelectorAll('.modal-overlay');
 
   overlays.forEach(ov => {
     ov.addEventListener('click', (e) => {
       if (e.target === ov) {
-        ov.classList.remove('open');
-        if (window.soundEngine) window.soundEngine.modalClose();
+        closeModal(ov);
       }
     });
 
     const closeBtn = ov.querySelector('.modal-close-btn');
     if (closeBtn) {
       closeBtn.addEventListener('click', () => {
-        ov.classList.remove('open');
-        if (window.soundEngine) window.soundEngine.modalClose();
+        closeModal(ov);
       });
     }
   });
@@ -721,8 +736,7 @@ function initModals() {
     if (e.key === 'Escape') {
       overlays.forEach(ov => {
         if (ov.classList.contains('open')) {
-          ov.classList.remove('open');
-          if (window.soundEngine) window.soundEngine.modalClose();
+          closeModal(ov);
         }
       });
     }
@@ -812,14 +826,13 @@ window.openTranscriptModal = function() {
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
         <span>Download Complete 29-Page Archive PDF (21.3 MB)</span>
       </a>
-      <button class="btn btn-primary" onclick="document.getElementById('transcript-modal').classList.remove('open')">
+      <button class="btn btn-primary" onclick="closeModal(document.getElementById('transcript-modal'))">
         <span>Close Record</span>
       </button>
     </div>
   `;
 
-  modal.classList.add('open');
-  if (window.soundEngine) window.soundEngine.modalOpen();
+  openModal(modal);
 };
 
 window.openCertificateModal = function(id) {
@@ -844,15 +857,14 @@ window.openCertificateModal = function(id) {
         <a href="${window.PORTFOLIO_DATA.profile.pdfDownloadUrl}" target="_blank" class="btn btn-secondary">
           <span>View in 29-Page PDF ↗</span>
         </a>
-        <button class="btn btn-primary" onclick="document.getElementById('certificate-modal').classList.remove('open')">
+        <button class="btn btn-primary" onclick="closeModal(document.getElementById('certificate-modal'))">
           <span>Dismiss</span>
         </button>
       </div>
     </div>
   `;
 
-  modal.classList.add('open');
-  if (window.soundEngine) window.soundEngine.modalOpen();
+  openModal(modal);
 };
 
 window.openCaseStudyModal = function(id) {
@@ -939,8 +951,7 @@ window.openCaseStudyModal = function(id) {
     </div>
   `;
 
-  ov.classList.add('open');
-  if (window.soundEngine) window.soundEngine.modalOpen();
+  openModal(ov);
 };
 
 /* 11. Audio Toggle */
@@ -982,3 +993,27 @@ function initLocalTime() {
   update();
   setInterval(update, 1000);
 }
+
+/* 13. Toast Notification Engine */
+window.showToast = function(message, duration = 2800) {
+  const container = document.getElementById('toast-container');
+  if (!container) return;
+
+  const toast = document.createElement('div');
+  toast.className = 'toast';
+  toast.innerHTML = `
+    <span style="color:var(--accent-cyan);font-weight:700;">⚡</span>
+    <span>${message}</span>
+  `;
+
+  container.appendChild(toast);
+
+  setTimeout(() => {
+    toast.style.opacity = '0';
+    toast.style.transform = 'translateY(10px)';
+    toast.style.transition = 'all 0.3s ease-out';
+    setTimeout(() => {
+      if (toast.parentNode) toast.parentNode.removeChild(toast);
+    }, 300);
+  }, duration);
+};
