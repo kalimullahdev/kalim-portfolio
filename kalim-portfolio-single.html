@@ -2191,36 +2191,39 @@ section {
   max-height: calc(100vh - 6rem);
   overflow-y: scroll !important; /* Always permanently visible */
   overflow-x: hidden;
-  scrollbar-gutter: stable;
+  scrollbar-gutter: stable always;
   -webkit-overflow-scrolling: touch;
   padding: 3rem 2.5rem; /* Generous top, bottom, and side padding inside dialog */
   scrollbar-width: thin;
-  scrollbar-color: var(--accent-primary) rgba(255, 255, 255, 0.08);
+  scrollbar-color: #6366f1 rgba(255, 255, 255, 0.12);
 }
 
 .modal-scroll-body::-webkit-scrollbar {
-  width: 8px !important;
+  width: 10px !important;
+  height: 10px !important;
   display: block !important;
+  -webkit-appearance: none !important;
 }
 
 .modal-scroll-body::-webkit-scrollbar-track {
   background: rgba(255, 255, 255, 0.08) !important;
-  border-radius: var(--radius-full);
-  margin: 1.25rem 0.25rem;
+  border-radius: 9999px !important;
+  margin: 1.5rem 0.35rem !important;
+  border: 1px solid rgba(255, 255, 255, 0.06) !important;
 }
 
 .modal-scroll-body::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, var(--accent-primary), var(--accent-cyan)) !important;
-  border-radius: var(--radius-full);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  min-height: 48px;
-  box-shadow: 0 0 10px rgba(99, 102, 241, 0.4);
+  background: linear-gradient(180deg, #6366f1 0%, #06b6d4 100%) !important;
+  border-radius: 9999px !important;
+  border: 2px solid #080c18 !important;
+  min-height: 60px !important;
+  box-shadow: 0 0 12px rgba(99, 102, 241, 0.6) !important;
   transition: background var(--transition-fast), box-shadow var(--transition-fast);
 }
 
 .modal-scroll-body::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(180deg, var(--accent-cyan), #38bdf8) !important;
-  box-shadow: 0 0 14px rgba(6, 182, 212, 0.8);
+  background: linear-gradient(180deg, #818cf8 0%, #22d3ee 100%) !important;
+  box-shadow: 0 0 16px rgba(6, 182, 212, 0.9) !important;
 }
 
 .modal-overlay.open .modal-container {
