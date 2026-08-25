@@ -1687,30 +1687,40 @@
   max-width: 820px;
   width: 100%;
   max-height: calc(100vh - 6rem);
-  overflow-y: scroll; /* Force permanent scrollbar */
-  scrollbar-gutter: stable;
-  padding: 3rem 2.5rem; /* Top & bottom padding inside dialog */
+  overflow: hidden !important; /* Strictly clips to the 32px rounded border radius */
+  padding: 0;
   box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.85), 0 0 50px rgba(99, 102, 241, 0.25);
   transform: scale(0.95);
   transition: transform var(--transition-base);
   position: relative;
   margin: auto;
-  scrollbar-width: thin;
-  scrollbar-color: var(--accent-primary) rgba(255, 255, 255, 0.06);
+  display: flex;
+  flex-direction: column;
 }
 
-.modal-container::-webkit-scrollbar {
+.modal-scroll-body {
+  width: 100%;
+  max-height: calc(100vh - 6rem);
+  overflow-y: auto;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+  padding: 3rem 2.5rem; /* Generous top, bottom, and side padding inside dialog */
+  scrollbar-width: thin;
+  scrollbar-color: var(--accent-primary) rgba(255, 255, 255, 0.05);
+}
+
+.modal-scroll-body::-webkit-scrollbar {
   width: 6px;
   display: block;
 }
 
-.modal-container::-webkit-scrollbar-track {
-  background: rgba(255, 255, 255, 0.06);
+.modal-scroll-body::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
   border-radius: var(--radius-full);
-  margin: 1.75rem 0.25rem; /* Insets track away from rounded corners */
+  margin: 1.5rem 0.25rem; /* Safely inset inside container padding */
 }
 
-.modal-container::-webkit-scrollbar-thumb {
+.modal-scroll-body::-webkit-scrollbar-thumb {
   background: linear-gradient(180deg, var(--accent-primary), var(--accent-cyan));
   border-radius: var(--radius-full);
   border: none;
@@ -1718,7 +1728,7 @@
   transition: background var(--transition-fast), box-shadow var(--transition-fast);
 }
 
-.modal-container::-webkit-scrollbar-thumb:hover {
+.modal-scroll-body::-webkit-scrollbar-thumb:hover {
   background: linear-gradient(180deg, var(--accent-cyan), #38bdf8);
   box-shadow: 0 0 12px rgba(6, 182, 212, 0.6);
 }
@@ -1729,8 +1739,8 @@
 
 .modal-close-btn {
   position: absolute;
-  top: 1.75rem;
-  right: 1.75rem;
+  top: 1.5rem;
+  right: 1.5rem;
   width: 38px;
   height: 38px;
   border-radius: 50%;
@@ -1738,6 +1748,14 @@
   border: 1px solid var(--glass-border);
   color: var(--text-secondary);
   display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  z-index: 30; /* Pinned above scrolling content */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
   align-items: center;
   justify-content: center;
   font-size: 1.25rem;
