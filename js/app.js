@@ -917,26 +917,28 @@ window.openTranscriptModal = function() {
             <span class="semester-title">${sem.semester}</span>
             <span class="semester-gpa">GPA ${sem.gpa} (${sem.credits} Credit Hours)</span>
           </div>
-          <table style="width:100%;border-collapse:collapse;font-size:0.8125rem;">
-            <thead>
-              <tr style="color:var(--text-muted);border-bottom:1px solid rgba(255,255,255,0.05);text-align:left;">
-                <th style="padding:0.4rem 0;">Course</th>
-                <th style="padding:0.4rem;text-align:center;">Marks</th>
-                <th style="padding:0.4rem;text-align:center;">Grade</th>
-                <th style="padding:0.4rem;text-align:right;">GPA</th>
-              </tr>
-            </thead>
-            <tbody>
-              ${sem.courses.map(c => `
-                <tr style="border-bottom:1px solid rgba(255,255,255,0.02);">
-                  <td style="padding:0.4rem 0;color:var(--text-primary);"><span style="color:var(--text-muted);font-family:var(--font-mono);">${c.code}</span> ${c.title}</td>
-                  <td style="padding:0.4rem;text-align:center;color:var(--text-secondary);font-family:var(--font-mono);">${c.marks}%</td>
-                  <td style="padding:0.4rem;text-align:center;font-weight:700;color:${c.grade.startsWith('A') ? 'var(--accent-emerald)' : 'var(--text-primary)'};">${c.grade}</td>
-                  <td style="padding:0.4rem;text-align:right;color:var(--accent-cyan);font-family:var(--font-mono);">${c.gpa}</td>
+          <div class="transcript-table-wrapper">
+            <table style="width:100%;border-collapse:collapse;font-size:0.8125rem;">
+              <thead>
+                <tr style="color:var(--text-muted);border-bottom:1px solid rgba(255,255,255,0.05);text-align:left;">
+                  <th style="padding:0.4rem 0;">Course</th>
+                  <th style="padding:0.4rem;text-align:center;">Marks</th>
+                  <th style="padding:0.4rem;text-align:center;">Grade</th>
+                  <th style="padding:0.4rem;text-align:right;">GPA</th>
                 </tr>
-              `).join('')}
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+                ${sem.courses.map(c => `
+                  <tr style="border-bottom:1px solid rgba(255,255,255,0.02);">
+                    <td style="padding:0.4rem 0;color:var(--text-primary);"><span style="color:var(--text-muted);font-family:var(--font-mono);">${c.code}</span> ${c.title}</td>
+                    <td style="padding:0.4rem;text-align:center;color:var(--text-secondary);font-family:var(--font-mono);">${c.marks}%</td>
+                    <td style="padding:0.4rem;text-align:center;font-weight:700;color:${c.grade.startsWith('A') ? 'var(--accent-emerald)' : 'var(--text-primary)'};">${c.grade}</td>
+                    <td style="padding:0.4rem;text-align:right;color:var(--accent-cyan);font-family:var(--font-mono);">${c.gpa}</td>
+                  </tr>
+                `).join('')}
+              </tbody>
+            </table>
+          </div>
         </div>
       `).join('')}
     </div>
