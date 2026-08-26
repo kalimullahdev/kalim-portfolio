@@ -33,6 +33,13 @@ document.addEventListener('DOMContentLoaded', () => {
   initModals();
   initLocalTime();
   initAudioToggle();
+
+  // Instant Cache Service Worker
+  if ('serviceWorker' in navigator && (window.location.protocol === 'https:' || window.location.hostname === 'localhost')) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('./sw.js').catch(() => {});
+    });
+  }
 });
 
 /* 1. Kinetic Zero-Layout-Shift Role Rotator */
