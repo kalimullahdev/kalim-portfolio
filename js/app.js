@@ -4,12 +4,23 @@
  */
 
 document.addEventListener('DOMContentLoaded', () => {
-  if ('scrollRestoration' in history) {
-    history.scrollRestoration = 'manual';
+  // Restore scroll position across iframe/webview resize reloads
+  const savedScroll = sessionStorage.getItem('portfolio_scroll_pos');
+  if (savedScroll && !window.location.hash) {
+    requestAnimationFrame(() => {
+      window.scrollTo({ top: parseInt(savedScroll, 10), behavior: 'instant' });
+    });
   }
-  if (!window.location.hash) {
-    window.scrollTo(0, 0);
-  }
+
+  // Continuously record scroll position for seamless state recovery
+  let scrollSaveTimer = null;
+  window.addEventListener('scroll', () => {
+    clearTimeout(scrollSaveTimer);
+    scrollSaveTimer = setTimeout(() => {
+      sessionStorage.setItem('portfolio_scroll_pos', window.scrollY.toString());
+    }, 80);
+  }, { passive: true });
+
   initRoleRotator();
   init3DTilt();
   initNavScrollSpy();
