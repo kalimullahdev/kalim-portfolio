@@ -48,6 +48,11 @@ if (fs.existsSync(imgDir)) {
   });
 }
 
+if (fs.existsSync(path.join(root, 'favicon.svg'))) {
+  const b64 = fs.readFileSync(path.join(root, 'favicon.svg')).toString('base64');
+  imageMap['favicon.svg'] = `data:image/svg+xml;base64,${b64}`;
+}
+
 // 4. Inline JS Files in correct dependency order
 const jsFiles = [
   'js/data.js',
